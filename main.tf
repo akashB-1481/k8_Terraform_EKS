@@ -9,6 +9,7 @@ terraform {
 
 provider "aws" {
   region = var.region
+  profile = "devops"
 }
 
 resource "aws_vpc" "dev_vpc" {
@@ -16,5 +17,6 @@ resource "aws_vpc" "dev_vpc" {
   tags = {
   Name = "devops-vpc"
 }
-
+enable_dns_support   = true
+enable_dns_hostnames = true
 }
