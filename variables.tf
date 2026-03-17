@@ -16,7 +16,7 @@ variable "var_terra" {
   })
   default = {
     vpc_cidr = "192.168.0.0/16"
-    public_subnet_cidr = "192.168.14.0/24"
+    public_subnet_cidr = "192.168.16.0/24"
     az = "ap-south-1a"
     instance_type = "t2.micro"
 
