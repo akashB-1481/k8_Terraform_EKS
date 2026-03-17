@@ -24,7 +24,7 @@ enable_dns_hostnames = true
 }
 
 #create subnet for the above VPC 
-resource "aws_subnet" "dev_net" {
+resource "aws_subnet" "dev_net_1" {
     vpc_id = aws_vpc.dev_vpc.id #mentino the VPC ID
     cidr_block = var.var_terra.public_subnet_cidr # creat the cidr block
     availability_zone = var.var_terra.az #adding the availablity zone
@@ -32,6 +32,16 @@ resource "aws_subnet" "dev_net" {
         Name = "devops-subnet-block"
     }
   
+}
+
+resource "aws_subnet" "dev_net_2" {
+  vpc_id            = aws_vpc.dev_vpc.id
+  cidr_block        = "192.168.15.0/24"
+  availability_zone = "ap-south-1b"
+
+  tags = {
+    Name = "devops-subnet-2"
+  }
 }
 
 #creat internet gateway
@@ -56,8 +66,15 @@ resource "aws_route_table" "dev_rt" {
 }
 
 #create a route tabel associate
-resource "aws_route_table_association" "dev_rta" {
-    subnet_id = aws_subnet.dev_net.id
+resource "aws_route_table_association" "dev_rta_1" {
+    subnet_id = aws_subnet.dev_net_1.id
+    route_table_id = aws_route_table.dev_rt.id
+    
+}
+
+#create a route tabel associate
+resource "aws_route_table_association" "dev_rta_2" {
+    subnet_id = aws_subnet.dev_net_2
     route_table_id = aws_route_table.dev_rt.id
     
 }
