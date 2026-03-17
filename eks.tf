@@ -22,7 +22,7 @@ resource "aws_eks_node_group" "dev_eks_node" {
         desired_size = 2
       }
 
-    instance_types = var.var_terra.instance_type 
+    instance_types = [var.var_terra.instance_type] 
     tags = {
         name = "devops-eks-node-group"
     }  
