@@ -74,7 +74,7 @@ resource "aws_route_table_association" "dev_rta_1" {
 
 #create a route tabel associate
 resource "aws_route_table_association" "dev_rta_2" {
-    subnet_id = aws_subnet.dev_net_2
+    subnet_id = aws_subnet.dev_net_2.id
     route_table_id = aws_route_table.dev_rt.id
     
 }
