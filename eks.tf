@@ -11,7 +11,7 @@ resource "aws_eks_cluster" "dev_eks" {
 } 
 
 resource "aws_eks_node_group" "dev_eks_node" {
-      cluster_name    = aws_eks_cluster.devops_eks.name 
+      cluster_name    = aws_eks_cluster.dev_eks.name
       node_group_name = "devops-eks-node"
       node_role_arn   = aws_iam_role.eks_node_role.arn
       subnet_ids      = [aws_subnet.dev_net.id]
