@@ -33,3 +33,31 @@ resource "aws_subnet" "dev_net" {
     }
   
 }
+
+#creat internet gateway
+resource "aws_internet_gateway" "dev_igw" {
+    vpc_id = aws_vpc.dev_vpc.id 
+    tags = {
+      name = "devops-IGW"
+    }
+  
+}
+
+#create routing table
+resource "aws_route_table" "dev_rt" {
+  vpc_id = aws_vpc.dev_vpc.id 
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.dev_igw.id
+  }
+  tags = {
+    name = "devops-route-table"
+  }
+}
+
+#create a route tabel associate
+resource "aws_route_table_association" "dev_rta" {
+    subnet_id = aws_subnet.dev_net.id
+    route_table_id = aws_route_table.dev_rt.id
+    
+}
