@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "dev_eks" {
     version = "1.35"
     role_arn = aws_iam_role.eks_cluster_role.arn 
     vpc_config {
-      subnet_ids = aws_subnet.dev_net.id 
+      subnet_ids = [aws_subnet.dev_net.id] 
     }
   tags = {
     name = "devops-eks"
