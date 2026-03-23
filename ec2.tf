@@ -39,7 +39,7 @@ resource "aws_instance" "rancher_ec2" {
   instance_type               = var.rancher_ec2.instance_type
   subnet_id                   = aws_subnet.dev_net_1.id
   vpc_security_group_ids      = [aws_security_group.rancher_sg.id]
-  key_name                    = "aws_key_pair.devops"
+  key_name                    = aws_key_pair.devops.key_name
   associate_public_ip_address = true
 
   tags = {
