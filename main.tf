@@ -28,6 +28,7 @@ resource "aws_subnet" "dev_net_1" {
     vpc_id = aws_vpc.dev_vpc.id #mentino the VPC ID
     cidr_block = var.var_terra.public_subnet_cidr # creat the cidr block
     availability_zone = var.var_terra.az #adding the availablity zone
+    map_public_ip_on_launch = true
     tags =  {
         Name = "devops-subnet-block"
     }
@@ -38,7 +39,7 @@ resource "aws_subnet" "dev_net_2" {
   vpc_id            = aws_vpc.dev_vpc.id
   cidr_block        = "192.168.15.0/24"
   availability_zone = "ap-south-1b"
-
+  map_public_ip_on_launch = true
   tags = {
     Name = "devops-subnet-2"
   }
