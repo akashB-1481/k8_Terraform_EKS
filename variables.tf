@@ -22,3 +22,15 @@ variable "var_terra" {
 
   }
 }
+
+#variables for EC2
+
+variable "rancher_ec2" {
+  description = "variables for rancher EC2"
+  type = object({
+    instance_type = string 
+  })
+    default = {
+    instance_type = "t3.medium"
+  }
+}
