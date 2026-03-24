@@ -41,6 +41,10 @@ resource "aws_instance" "rancher_ec2" {
   vpc_security_group_ids      = [aws_security_group.rancher_sg.id]
   key_name                    = aws_key_pair.devops.key_name
   associate_public_ip_address = true
+    root_block_device {
+    volume_size = 20   
+    volume_type = "gp3"
+  }
 
   tags = {
     Name = "rancher-server"
