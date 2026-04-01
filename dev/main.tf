@@ -13,10 +13,7 @@ provider "aws" {
   profile = "devops"
 }
 
-module "network" {
-    source = "../modules/network"
-    
-} 
+ 
 
 resource "aws_eks_cluster" "dev_eks" {
     name = "devop-eks-cluster"
