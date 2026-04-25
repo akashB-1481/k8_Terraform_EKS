@@ -10,6 +10,11 @@ resource "aws_launch_template" "eks_node" {
 
   }
 
+  user_data = base64encode(<<EOF
+#!/bin/bash
+/etc/eks/bootstrap.sh devop-eks-cluster
+EOF
+)
   tag_specifications {
     resource_type = "instance"
     tags = {
