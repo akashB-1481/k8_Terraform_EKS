@@ -21,12 +21,9 @@ resource "aws_eks_node_group" "dev_eks_node" {
         max_size = 2
         desired_size = 2
       }
+      
 
-      launch_template {
-        id = aws_launch_template.eks_node.id 
-        version = "$Latest"
-      }
-
+    instance_types = [var.var_terra.instance_type] 
     tags = {
         name = "devops-eks-node-group"
     }  
