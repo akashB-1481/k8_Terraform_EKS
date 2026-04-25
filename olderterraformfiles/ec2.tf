@@ -11,6 +11,13 @@ resource "aws_security_group" "rancher_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+    ingress {
+    from_port   = 2049
+    to_port     = 2049
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     from_port   = 80
     to_port     = 80
@@ -35,7 +42,7 @@ resource "aws_security_group" "rancher_sg" {
 
 # EC2 Instance
 resource "aws_instance" "rancher_ec2" {
-  ami                         = data.aws_ami.ubuntu.id
+  ami                         = ami-07f919f92632ae971
   instance_type               = var.rancher_ec2.instance_type
   subnet_id                   = aws_subnet.dev_net_1.id
   vpc_security_group_ids      = [aws_security_group.rancher_sg.id]
