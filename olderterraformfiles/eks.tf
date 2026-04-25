@@ -24,7 +24,7 @@ resource "aws_eks_node_group" "dev_eks_node" {
 
       launch_template {
         id = aws_launch_template.eks_node.id 
-        version = "$latest"
+        version = "$Latest"
       }
 
     tags = {
