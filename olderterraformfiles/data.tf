@@ -1,17 +1,10 @@
-# removing data for the time being 
-
-data "aws_ami" "ubuntu" {
+data "aws_ami" "eks_default" {
   most_recent = true
-
-  owners = ["099720109477"] # Canonical
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*"]
+    values = ["amazon-eks-node-*"]
   }
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
+  owners = ["602401143452"] # AWS EKS AMI account
 }
