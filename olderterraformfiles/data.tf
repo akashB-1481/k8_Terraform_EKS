@@ -3,8 +3,8 @@ data "aws_ami" "eks_default" {
 
   filter {
     name   = "name"
-    values = ["amazon-eks-node-*"]
+    values = ["amazon-eks-node-*x86_64*"]
   }
 
-  owners = ["602401143452"] # AWS EKS AMI account
+  owners = ["602401143452"]
 }
