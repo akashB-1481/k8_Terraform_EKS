@@ -54,3 +54,8 @@ resource "aws_iam_instance_profile" "eks_node_profile" {
   name = "eks-node-profile"
   role = aws_iam_role.eks_node_role.name
 }
+
+resource "aws_iam_role_policy_attachment" "ebs_csi_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  role       = aws_iam_role.eks_node_role.name
+}
