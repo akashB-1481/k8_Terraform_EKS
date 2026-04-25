@@ -15,6 +15,14 @@ resource "aws_launch_template" "eks_node" {
 /etc/eks/bootstrap.sh devop-eks-cluster
 EOF
 )
+  block_device_mappings {
+    device_name = "/dev/xvda"
+
+    ebs {
+      volume_size = 20
+      volume_type = "gp3"
+    }
+  }
   tag_specifications {
     resource_type = "instance"
     tags = {
