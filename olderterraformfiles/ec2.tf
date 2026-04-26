@@ -42,7 +42,7 @@ resource "aws_security_group" "rancher_sg" {
 
 # EC2 Instance
 resource "aws_instance" "rancher_ec2" {
-  ami                         = ami-07f919f92632ae971
+  ami                         = "ami-07f919f92632ae971"
   instance_type               = var.rancher_ec2.instance_type
   subnet_id                   = aws_subnet.dev_net_1.id
   vpc_security_group_ids      = [aws_security_group.rancher_sg.id]
